@@ -93,15 +93,16 @@
 
 
 
-<meta name="description" content="原文链接  在 WWDC 2017 上，苹果公司发布了很多令开发者激动不已的框架和 API。在这些框架中，Core ML 无疑是最受关注的框架之一。利用 Core ML，你可将机器学习模型整合到应用中，但并不需要了解神经网络和机器学习的相关知识。另外，你可以使用一些预定义的数据模型，只要将其转换成 Core ML 的模型即可。为了演示，我们将使用苹果开发者网站所提供的 Core ML 模型。闲话">
+<meta name="description" content="原文链接  在 WWDC 2017 上，苹果公司发布了很多令开发者激动不已的框架和 API。在这些框架中，Core ML 无疑是最受关注的框架之一。利用 Core ML，你可将机器学习模型整合到应用中，但并不需要了解神经网络和机器学习的相关知识。另外，你可以使用一些预处理的数据模型，只要将其转换成 Core ML 的模型即可。为了演示，我们将使用苹果开发者网站所提供的 Core ML 模型。闲话">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Core ML 初体验：构建简单的图像识别应用">
 <meta property="og:url" content="https://blog.snail-shell.studio/2017/07/12/translation-coreml-introduction/index.html">
 <meta property="og:site_name" content="随语">
-<meta property="og:description" content="原文链接  在 WWDC 2017 上，苹果公司发布了很多令开发者激动不已的框架和 API。在这些框架中，Core ML 无疑是最受关注的框架之一。利用 Core ML，你可将机器学习模型整合到应用中，但并不需要了解神经网络和机器学习的相关知识。另外，你可以使用一些预定义的数据模型，只要将其转换成 Core ML 的模型即可。为了演示，我们将使用苹果开发者网站所提供的 Core ML 模型。闲话">
+<meta property="og:description" content="原文链接  在 WWDC 2017 上，苹果公司发布了很多令开发者激动不已的框架和 API。在这些框架中，Core ML 无疑是最受关注的框架之一。利用 Core ML，你可将机器学习模型整合到应用中，但并不需要了解神经网络和机器学习的相关知识。另外，你可以使用一些预处理的数据模型，只要将其转换成 Core ML 的模型即可。为了演示，我们将使用苹果开发者网站所提供的 Core ML 模型。闲话">
 <meta property="og:image" content="https://blog.snail-shell.studio/2017/07/12/translation-coreml-introduction/images/trained-model.png">
 <meta property="og:image" content="https://blog.snail-shell.studio/2017/07/12/translation-coreml-introduction/images/coreml-app-demo.png">
 <meta property="og:image" content="https://blog.snail-shell.studio/2017/07/12/translation-coreml-introduction/images/xcode9-new-proj.png">
+<meta property="og:image" content="https://blog.snail-shell.studio/2017/07/12/translation-coreml-introduction/images/pic3.png">
 <meta property="og:image" content="https://blog.snail-shell.studio/2017/07/12/translation-coreml-introduction/images/coreml-storyboard.png">
 <meta property="og:image" content="https://blog.snail-shell.studio/2017/07/12/translation-coreml-introduction/images/coreml-plist-privacy.png">
 <meta property="og:image" content="https://blog.snail-shell.studio/2017/07/12/translation-coreml-introduction/images/coreml-pretrained-model.png">
@@ -109,10 +110,10 @@
 <meta property="og:image" content="https://blog.snail-shell.studio/2017/07/12/translation-coreml-introduction/images/inceptionv3-class.png">
 <meta property="og:image" content="https://blog.snail-shell.studio/2017/07/12/translation-coreml-introduction/images/coreml-successful-case.jpg">
 <meta property="og:image" content="https://blog.snail-shell.studio/2017/07/12/translation-coreml-introduction/images/coreml-failed-case.jpg">
-<meta property="og:updated_time" content="2017-07-12T08:01:05.000Z">
+<meta property="og:updated_time" content="2017-07-13T01:18:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Core ML 初体验：构建简单的图像识别应用">
-<meta name="twitter:description" content="原文链接  在 WWDC 2017 上，苹果公司发布了很多令开发者激动不已的框架和 API。在这些框架中，Core ML 无疑是最受关注的框架之一。利用 Core ML，你可将机器学习模型整合到应用中，但并不需要了解神经网络和机器学习的相关知识。另外，你可以使用一些预定义的数据模型，只要将其转换成 Core ML 的模型即可。为了演示，我们将使用苹果开发者网站所提供的 Core ML 模型。闲话">
+<meta name="twitter:description" content="原文链接  在 WWDC 2017 上，苹果公司发布了很多令开发者激动不已的框架和 API。在这些框架中，Core ML 无疑是最受关注的框架之一。利用 Core ML，你可将机器学习模型整合到应用中，但并不需要了解神经网络和机器学习的相关知识。另外，你可以使用一些预处理的数据模型，只要将其转换成 Core ML 的模型即可。为了演示，我们将使用苹果开发者网站所提供的 Core ML 模型。闲话">
 <meta name="twitter:image" content="https://blog.snail-shell.studio/2017/07/12/translation-coreml-introduction/images/trained-model.png">
 
 
@@ -394,12 +395,12 @@
         <blockquote>
 <p><a href="https://www.appcoda.com/coreml-introduction" target="_blank" rel="external">原文链接</a></p>
 </blockquote>
-<p>在 WWDC 2017 上，苹果公司发布了很多令开发者激动不已的框架和 API。在这些框架中，Core ML 无疑是最受关注的框架之一。利用 Core ML，你可将机器学习模型整合到应用中，但并不需要了解神经网络和机器学习的相关知识。另外，你可以使用一些预定义的数据模型，只要将其转换成 Core ML 的模型即可。为了演示，我们将使用苹果开发者网站所提供的 Core ML 模型。闲话少叙，让我们开始学习 Core ML 吧。</p>
+<p>在 WWDC 2017 上，苹果公司发布了很多令开发者激动不已的框架和 API。在这些框架中，Core ML 无疑是最受关注的框架之一。利用 Core ML，你可将机器学习模型整合到应用中，但并不需要了解神经网络和机器学习的相关知识。另外，你可以使用一些预处理的数据模型，只要将其转换成 Core ML 的模型即可。为了演示，我们将使用苹果开发者网站所提供的 Core ML 模型。闲话少叙，让我们开始学习 Core ML 吧。</p>
 <a id="more"></a>
-<p><div class="note success"><p><span style="color: #5FB760;"><strong>提示：</strong>为了完成教程，你需要使用 Xcode 9 beta 版，另外还需要运行 iOS 11 beta 版的设备，来测试教程中所介绍的特性。Xcode 9 beta 兼容 Swfit 3.2 和 4.0 版本，以下代码全部基于 Swfit 4.0 的语法完成。</span> </p>
+<p><div class="note success"><p><span style="color: #5FB760;"><strong>提示：</strong>为了完成教程，你需要使用 Xcode 9 beta 版，另外还需要运行 iOS 11 beta 版的设备，来测试教程中所介绍的特性。Xcode 9 beta 兼容 Swift 3.2 和 4.0 版本，以下代码全部基于 Swift 4.0 的语法完成。</span> </p>
 </div> &nbsp;</p>
 <h2 id="Core-ML-简介"><a href="#Core-ML-简介" class="headerlink" title="Core ML 简介"></a>Core ML 简介</h2><blockquote>
-<p>Core ML 可以使你将种类繁多的机器学习模型整合到应用中，除了支持30多种深度学习的模型类型外，还支持如 tree ensemble、SVM 和 generalized linear model 等标准模型。由于 Core ML 构建于 Matel 和 Accelerate 这种底层技术之上，因此，它可以充分利用 CPU、GPU 所提供的超高性能。你可以在设备上运行机器学习模型，以至于数据可以不与待分析设备分离。</p>
+<p>Core ML 可以使你将种类繁多的机器学习模型整合到应用中，除了支持30多种深度学习的模型类型外，还支持如 tree ensemble、SVM 和 generalized linear model 等标准模型。由于 Core ML 构建于 Matel 和 Accelerate 这种底层技术之上，因此，它可以充分利用 CPU、GPU 所提供的超高性能。你可以在设备上运行机器学习模型，而不用将分析设备和数据分离。</p>
 <p><strong>苹果官方文档</strong> - <a href="https://developer.apple.com/machine-learning/" target="_blank" rel="external">Core ML</a></p>
 </blockquote>
 <p>Core ML 是一款全新的框架，整合于 iOS 11 中，首次亮相于今年的 WWDC 上。有了它，你可以将机器学习模型整合进自己的应用中，多说一句，究竟什么是机器学习呢？简言之，机器学习是一种应用，这种应用可以不通过编程的方法，来给予计算机学习的能力。而模型则是机器学习算法与被处理数据结合后的产物。 </p>
@@ -414,6 +415,7 @@
 <h2 id="创建用户界面"><a href="#创建用户界面" class="headerlink" title="创建用户界面"></a>创建用户界面</h2><p><div class="note success"><p><span style="color: #5FB760;"><strong>编者提示：</strong>如果你不想从零开始构建 UI，可以<strong><a href="https://github.com/appcoda/CoreMLDemo/raw/master/CoreMLDemoStarter.zip" target="_blank" rel="external">下载初始工程模板</a></strong>，并直接跳转到 Core ML 部分。</span> </p>
 </div> &nbsp;</p>
 <p>首先，切换至 <code>Main.storyboard</code> 文件，为视图添加一些 UI 组件，选中 ViewController 后，点击 Xcode 菜单栏中的 <code>Editor -&gt; Embed In -&gt; Navigation Controller</code>，完成该操作后，你会发现导航栏出现在了视图的顶部，双击导航栏，将标题修改为 Core ML（或者你认为合适的内容）。</p>
+<p><img src="/2017/07/12/translation-coreml-introduction/images/pic3.png" alt="images/pic3.png" title=""> &nbsp;</p>
 <p>接着，拖拽两个 BarButtonItem：分别放置于导航栏的两侧。选择左侧的 BarButtonItem，在 <code>Attributes Inspector</code> 中，修改 <code>System Item</code> 属性为”Camera”。然后选择右侧的 BarButtonItem，修改其名称为”Library”，这两个按钮可以让用户拍照或从相册中选择照片。</p>
 <p>最后，你还需要添加 <code>UILabel</code> 和 <code>UIImageView</code> 这两个组件。将 <code>UIImageView</code> 置于视图的中间，并修改其大小为 <code>299x299</code>。将 <code>UILabel</code> 置于视图地步，将其拉伸并顶满左右边框。至此，UI 部分已经完成了。</p>
 <p>我并没有提及如何配置视图组件的 Auto Layout 设置，我建议你来尝试完成，避免出现位置有歧义的视图组件。如果你对 Auto Layout 并不熟悉，从而无法完成这些设置，请在你要运行的设备上构建 Storyboard。</p>
